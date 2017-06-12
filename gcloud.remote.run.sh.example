@@ -1,0 +1,17 @@
+export BUCKET_NAME=my-gcs-bucket
+export JOB_NAME="my_job_name_$(date +%Y%m%d_%H%M%S)"
+export JOB_DIR=gs://$BUCKET_NAME/$JOB_NAME
+export REGION=us-central1
+
+export TRAIN_FILE="gs://$BUCKET_NAME/my_input_data.txt"
+export EMBEDS_PATH="gs://$BUCKET_NAME/glove.840B.300d-char.txt"
+
+gcloud ml-engine jobs submit training $JOB_NAME \
+  --module-name trainer.text_generator_keras \
+  --package-path ./trainer \
+  --config=trainer/cloudml-gpu.yaml \
+  --job-dir=$JOB_DIR \
+  --region=$REGION \
+  -- \
+  --train-file=$TRAIN_FILE
+  --embeds-file=$EMBEDS_PATH
