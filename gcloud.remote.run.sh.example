@@ -13,5 +13,5 @@ gcloud ml-engine jobs submit training $JOB_NAME \
   --job-dir=$JOB_DIR \
   --region=$REGION \
   -- \
-  --train-file=$TRAIN_FILE
+  --train-file=$TRAIN_FILE \
   --embeds-file=$EMBEDS_PATH
