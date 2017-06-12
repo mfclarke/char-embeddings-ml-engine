@@ -67,11 +67,11 @@ def train_model(train_file='input.txt', job_dir='./tmp/', embeds_file='glove.840
         y[i, char_indices[next_chars[i]]] = 1
 
     # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
-    if pretrained_embeds_path:
+    if embeds_file:
         print('Processing pretrained character embeds...')
         embedding_vectors = {}
 
-        with file_io.FileIO(pretrained_embeds_path, mode='r') as f:
+        with file_io.FileIO(embeds_file, mode='r') as f:
             for line in f:
                 line_split = line.strip().split(" ")
                 vec = np.array(line_split[1:], dtype=float)
@@ -98,7 +98,7 @@ def train_model(train_file='input.txt', job_dir='./tmp/', embeds_file='glove.840
     print('Build model...')
     main_input = Input(shape=(maxlen,))
 
-    if embedding_matrix:
+    if embeds_file:
         embedding_layer = Embedding(
             len(chars), embedding_dim, input_length=maxlen,
             weights=[embedding_matrix_pca] if use_pca else [embedding_matrix])
