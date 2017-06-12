@@ -1,7 +1,7 @@
 # char-embeddings on Google ML Engine
 ![](char-tsne-embed.png)
 
-**char-embeddings** is a repository containing 300D character embeddings derived from the GloVe 840B/300D dataset, and uses these embeddings to train a deep learning model to generate text using [Keras](https://keras.io/). The generation and model construction is heavily modified after the [automatic text generation](https://github.com/fchollet/keras/blob/master/examples/lstm_text_generation.py) Keras example by [François Chollet](https://twitter.com/fchollet). I've taken this work and refactored it to run on Google's ML Engine, with sensible environment variables and an example script to execute training.
+[char-embeddings](https://github.com/minimaxir/char-embeddings) is a repository by [Max Woolf](https://github.com/minimaxir) containing 300D character embeddings derived from the GloVe 840B/300D dataset, and uses these embeddings to train a deep learning model to generate text using [Keras](https://keras.io/). The generation and model construction is heavily modified after the [automatic text generation](https://github.com/fchollet/keras/blob/master/examples/lstm_text_generation.py) Keras example by [François Chollet](https://twitter.com/fchollet). This repository takes this work, makes it generic, and refactors it to run on Google's ML Engine with sensible environment variables and an example script to execute training on a GPU instance.
 
 ## Usage
 
